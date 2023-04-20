@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;" *ngFor="let producto of productos">
+    <img src="{{producto.img}}" class="card-img-top" alt="...">
+    <div class="card-body">
+     <h5 class="card-title">{{producto.nombre}}</h5>
+     <p class="card-text">{{producto.descripcion}}</p>
+     <p class="card-text">{{producto.precio}}</p>
+     <a href="#" class="btn btn-primary" (click)="agregarProducto(producto)">Agregar al carrito</a>
+   </div>
+</div>
+
