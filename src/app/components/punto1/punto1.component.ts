@@ -9,7 +9,6 @@ export class Punto1Component implements OnInit {
   productos: Array<any>;
   carrito: Array<any> = [];
   cantidadCarrito: number=0;
-  total_plata:number = 0;
 
   constructor() { 
     this.productos = [
@@ -31,7 +30,7 @@ export class Punto1Component implements OnInit {
     if(this.carrito.length === 0){ //primer producto que se agrega al carrito
       producto.cantidad=1;
       this.carrito.push(producto);
-    }else{ // se aumenta la cantidad de un producto que ya está en el carrito
+    }else{ // se aumenta la cantidad de un producto que ya está en el carrito desde la card
       const ENCONTRADO = this.carrito.find((x)=>{
         return producto.nombre === x.nombre;
       })
@@ -46,7 +45,7 @@ export class Punto1Component implements OnInit {
   }
 
   eliminarProductoDelCarrito(producto:any){
-    this.carrito = this.carrito.filter((x)=>{
+    this.carrito = this.carrito.filter((x)=>{ //deja solo los productos que no tienen el nombre del producto a eliminar
       return producto.nombre != x.nombre;
     })
   }
@@ -61,7 +60,7 @@ export class Punto1Component implements OnInit {
         producto.cantidad-=1;
         this.cantidadCarrito--;
       }
-      if(operacion === 'agregar'){
+      if(operacion === 'agregar'){ // se agrega desde el modal
         producto.cantidad+=1;
         this.cantidadCarrito++;
       }
@@ -69,7 +68,13 @@ export class Punto1Component implements OnInit {
         this.eliminarProductoDelCarrito(producto);
       }
     }
+  }
 
+  public calcularTotal(){
+    const total = this.carrito.reduce(function(contador,producto) {
+      return contador + (producto.cantidad*producto.precio);
+    },0)
+    return total;
   }
 
 }
