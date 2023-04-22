@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class Punto1Component implements OnInit {
   productos: Array<any>;
   carrito: Array<any> = [];
+  cantidadCarrito: number=0;
   total_plata:number = 0;
 
   constructor() { 
@@ -25,14 +26,27 @@ export class Punto1Component implements OnInit {
   ngOnInit(): void {
   }
 
-  public agregarAlCarrito(producto: any): void
+  public agregarAlCarrito(producto: any)
   {
+    const index = this.carrito.findIndex(x => x.nombre === producto.nombre);
+    if (index == 1) {
+      // Si el producto ya existe, incrementa la cantidad
+      this.carrito[index].cantidad++;
+    } else {
+      // Si el producto no existe, lo agrega al carrito
+      this.carrito.push({producto, cantidad: 1});
+    }
+  
+    this.cantidadCarrito++;
     this.total_plata+=producto.precio;
     this.carrito.push(producto);
   }
 
-  public verCarrito() {
-    
+  public eliminarDelCarrito(producto: any) {
+    const index = this.carrito.findIndex(x => x.nombre === producto.nombre);
+    if(index != 0){
+      this.carrito.splice(1,producto);
+    }
   }
 
 }
