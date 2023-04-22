@@ -13,12 +13,12 @@ export class Punto1Component implements OnInit {
 
   constructor() { 
     this.productos = [
-      {nombre: 'notebook asus 13L', descripcion: 'disco 40GB, 15pulgadas', img: 'imagen1.jpg', precio: 45.5},
-      {nombre: 'Monitor LG 14', descripcion: 'texto descriptivo producto 02', img: 'imagen2.jpg', precio: 100},
-      {nombre: 'Monitor LG 55', descripcion: 'texto descriptivo producto 02', img: 'imagen3.jpg', precio: 150},
-      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen1.jpg', precio: 160},
-      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen2.jpg', precio: 170},
-      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen3.jpg', precio: 200}
+      {nombre: 'notebook asus 13L', descripcion: 'disco 40GB, 15pulgadas', img: 'imagen1.jpg', precio: 45.5, cantidad: 0},
+      {nombre: 'Monitor LG 14', descripcion: 'texto descriptivo producto 02', img: 'imagen2.jpg', precio: 100, cantidad: 0},
+      {nombre: 'Monitor LG 55', descripcion: 'texto descriptivo producto 02', img: 'imagen3.jpg', precio: 150,cantidad: 0},
+      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen1.jpg', precio: 160,cantidad: 0},
+      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen2.jpg', precio: 170,cantidad: 0},
+      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen3.jpg', precio: 200,cantidad: 0}
     ];
 
   }
@@ -28,25 +28,48 @@ export class Punto1Component implements OnInit {
 
   public agregarAlCarrito(producto: any)
   {
-    const index = this.carrito.findIndex(x => x.nombre === producto.nombre);
-    if (index == 1) {
-      // Si el producto ya existe, incrementa la cantidad
-      this.carrito[index].cantidad++;
-    } else {
-      // Si el producto no existe, lo agrega al carrito
-      this.carrito.push({producto, cantidad: 1});
+    if(this.carrito.length === 0){ //primer producto que se agrega al carrito
+      producto.cantidad=1;
+      this.carrito.push(producto);
+    }else{ // se aumenta la cantidad de un producto que ya está en el carrito
+      const ENCONTRADO = this.carrito.find((x)=>{
+        return producto.nombre === x.nombre;
+      })
+      if(ENCONTRADO){
+        producto.cantidad+=1;
+      }else{ //nuevo producto que se agrega al carrito
+        producto.cantidad=1;
+        this.carrito.push(producto);
+      }
     }
-  
     this.cantidadCarrito++;
-    this.total_plata+=producto.precio;
-    this.carrito.push(producto);
   }
 
-  public eliminarDelCarrito(producto: any) {
-    const index = this.carrito.findIndex(x => x.nombre === producto.nombre);
-    if(index != 0){
-      this.carrito.splice(1,producto);
+  eliminarProductoDelCarrito(producto:any){
+    this.carrito = this.carrito.filter((x)=>{
+      return producto.nombre != x.nombre;
+    })
+  }
+
+  public actualizarUnidades(operacion:string,producto: any) {
+    const ELIMINADO = this.carrito.find((x)=>{
+      return x.nombre === producto.nombre;
+    })
+
+    if(ELIMINADO){
+      if(operacion === 'quitar' && producto.cantidad > 0){
+        producto.cantidad-=1;
+        this.cantidadCarrito--;
+      }
+      if(operacion === 'agregar'){
+        producto.cantidad+=1;
+        this.cantidadCarrito++;
+      }
+      if(producto.cantidad===0){
+        this.eliminarProductoDelCarrito(producto);
+      }
     }
+
   }
 
 }
