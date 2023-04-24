@@ -5,24 +5,26 @@
             
             <div class="card col-md-12 bg-success" *ngIf="!gameOver && gameStart">
                 <div class="card-body d-flex flex-column align-items-center">
-                    <h2 class="fw-bold">Current Iteration: {{currentIteration+1}}</h2>
-                    <h4 class="display-5 fw-bold bg-warning border border-white rounded-5 w-75">¿Cuántas {{currentOption}} hay en la palabra: "{{currentWord}}"?</h4> 
-                    <div *ngFor="let n of randomNumbers">
-                        <div>
-                            <button class="w-100 m-3 p-2 bg-secondary-subtle border-3 border-white rounded-3" (click)="startGame(n)">{{n}}</button>
+                    <h2 class="fw-bold">Current Iteration: {{currentIteration}}</h2>
+                    <h4 class="display-5 fw-bold bg-warning border border-white rounded-5 w-75">¿Cuántas {{currentOption}} hay en la palabra: "{{currentWord}}"?</h4>
+                </div>
+                <div class="card-footer">
+                    <div class="row" *ngFor="let n of randomNumbers">
+                        <div class="col">
+                            <button class="w-50 m-3 p-2 bg-secondary-subtle border-3 border-white rounded-3" (click)="startGame(n)">{{n}}</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card mt-5 bg-danger" *ngIf="gameOver">
+            <div class="card mt-5 bg-dark" *ngIf="gameOver">
                 <div class="card-header text-white">
-                    <h3>Correct Answers: {{correctAnswers}}</h3>
-                    <h3>Incorrect Answers: {{incorrectAnswers}}</h3>
-                    <h3>Total words: {{currentIteration}}</h3>
+                    <h3 class="bg-success">Correct Answers: {{correctAnswers}}</h3>
+                    <h3 class="bg-danger">Incorrect Answers: {{incorrectAnswers}}</h3>
+                    <h3 class="text-white">Total words: {{currentIteration}}</h3>
                 </div>
                 <div class="card-body">
-                    <h2>Game Over</h2>
+                    <h2 class="text-white">Game Over</h2>
                     <button type="button" (click)="initializeGame()">Click on this to play again</button>
                 </div>
             </div>

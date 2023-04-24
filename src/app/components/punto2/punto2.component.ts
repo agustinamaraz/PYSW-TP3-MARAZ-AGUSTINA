@@ -37,11 +37,22 @@ export class Punto2Component implements OnInit {
   ngOnInit(): void {
   }
 
-  public generateRandomNumbers(){
-    for (let i = 0; i < 4; i++) {
-      const num = Math.floor(Math.random() * 4);
+  public generateRandomNumber(){
+    return Math.floor(Math.random() * 12)+1;
+  }
+
+  public generateUniqueRandomNumbers(){
+    this.randomNumbers = [];
+    let i=0,num=0;
+
+   while(i<4){
+    num = this.generateRandomNumber();
+    if(!(this.randomNumbers.includes(num))){
       this.randomNumbers.push(num);
+      i++;
     }
+   }
+
   }
 
   public initializeGame(){
@@ -53,36 +64,37 @@ export class Punto2Component implements OnInit {
 
     this.currentWord = this.wordList[this.currentIteration].name;
     this.currentOption = this.optionList[Math.floor(Math.random()*4)];
-    this.generateRandomNumbers();
+    this.generateUniqueRandomNumbers();
   }
 
   public startGame(answer:number):void{
     this.currentIteration++;
+    this.generateUniqueRandomNumbers();
 
     if(this.currentIteration < 10){
       this.currentWord = this.wordList[this.currentIteration].name;
       if(this.currentOption === this.optionList[0]){
-        if(answer === this.currentWord.v){
+        if(answer === this.wordList[this.currentIteration].v){
           this.correctAnswers++;
         }else{
           this.incorrectAnswers++;
         }
       }
       if(this.currentOption === this.optionList[1]){
-        if(answer === this.currentWord.c){
+        if(answer === this.wordList[this.currentIteration].c){
           this.correctAnswers++;
         }else{
           this.incorrectAnswers++;
         }
       }
       if(this.currentOption === this.optionList[2]){
-        if(answer === this.currentWord.l){
+        if(answer === this.wordList[this.currentIteration].l){
           this.correctAnswers++;
         }else{
           this.incorrectAnswers++;
         }
       }
-      if(this.currentOption === this.optionList[3]){
+      if(this.currentOption === this.wordList[this.currentIteration].s){
         if(answer === this.currentWord.s){
           this.correctAnswers++;
         }else{
