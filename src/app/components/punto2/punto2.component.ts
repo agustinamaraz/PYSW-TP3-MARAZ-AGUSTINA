@@ -15,8 +15,10 @@ export class Punto2Component implements OnInit {
   correctAnswers!:number;
   incorrectAnswers!:number;
   currentIteration!:number;
+  randomNumbers:Array<number>;
 
   constructor() {
+    this.randomNumbers = [];
     this.wordList = [
       {name:'hoja',v:2,c:2,s:2,l:4},
       {name:'manzana',v:3,c:4,s:3,l:7},
@@ -35,6 +37,13 @@ export class Punto2Component implements OnInit {
   ngOnInit(): void {
   }
 
+  public generateRandomNumbers(){
+    for (let i = 0; i < 4; i++) {
+      const num = Math.floor(Math.random() * 4);
+      this.randomNumbers.push(num);
+    }
+  }
+
   public initializeGame(){
     this.currentIteration=0;
     this.gameStart=true;
@@ -44,6 +53,7 @@ export class Punto2Component implements OnInit {
 
     this.currentWord = this.wordList[this.currentIteration].name;
     this.currentOption = this.optionList[Math.floor(Math.random()*4)];
+    this.generateRandomNumbers();
   }
 
   public startGame(answer:number):void{

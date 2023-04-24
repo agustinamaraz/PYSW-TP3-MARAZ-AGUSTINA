@@ -1,23 +1,15 @@
-<div class="container bg-secondary py-3 text-center">
+<div class="container bg-secondary py-5 text-center">
     <div class="row">
         <div class="col-md-12">
             <button type="button" class="bg-danger w-25 text-white border border-white rounded-5" (click)="initializeGame()" *ngIf="!gameStart">Play</button>
             
-            <div class="card mt-5 col-md-12 bg-success" *ngIf="!gameOver && gameStart">
+            <div class="card col-md-12 bg-success" *ngIf="!gameOver && gameStart">
                 <div class="card-body d-flex flex-column align-items-center">
+                    <h2 class="fw-bold">Current Iteration: {{currentIteration+1}}</h2>
                     <h4 class="display-5 fw-bold bg-warning border border-white rounded-5 w-75">¿Cuántas {{currentOption}} hay en la palabra: "{{currentWord}}"?</h4> 
-                    <div class="row">
-                        <div class="col-6">
-                            <button class="w-75 m-3 p-2 bg-secondary-subtle border-3 border-white rounded-3" (click)="startGame(currentWord.v)">1</button>
-                        </div>
-                        <div class="col-6">
-                            <button class="w-75 m-3 p-2 bg-secondary-subtle border-3 border-white rounded-3" (click)="startGame(currentWord.c)">2</button>
-                        </div>
-                        <div class="col-6">
-                            <button class="w-75 m-3 p-2 bg-secondary-subtle border-3 border-white rounded-3" (click)="startGame(currentWord.l)">2</button>
-                        </div>
-                        <div class="col-6">
-                            <button class="w-75 m-3 p-2 bg-secondary-subtle border-3 border-white rounded-3" (click)="startGame(currentWord.s)">4</button>
+                    <div *ngFor="let n of randomNumbers">
+                        <div>
+                            <button class="w-100 m-3 p-2 bg-secondary-subtle border-3 border-white rounded-3" (click)="startGame(n)">{{n}}</button>
                         </div>
                     </div>
                 </div>
