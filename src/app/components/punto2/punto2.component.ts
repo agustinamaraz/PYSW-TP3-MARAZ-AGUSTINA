@@ -53,18 +53,31 @@ export class Punto2Component implements OnInit {
       }
     }
 
+    let correctAnswer=0;
     num = this.generateRandomNumber(0, 3);
-    if (this.currentOption === 'vocales' && num !== this.randomNumbers[num]) {
-      this.randomNumbers[num] = this.wordList[this.currentIteration].v;
+    if (this.currentOption === 'vocales') {
+      correctAnswer = this.wordList[this.currentIteration].v;
+      if(!(this.randomNumbers.includes(correctAnswer))){
+        this.randomNumbers[num] = correctAnswer;
+      }
     }
-    if (this.currentOption === 'consonantes' && !(this.randomNumbers.includes(num))) {
-      this.randomNumbers[num] = this.wordList[this.currentIteration].c;
+    if (this.currentOption === 'consonantes') {
+      correctAnswer = this.wordList[this.currentIteration].c;
+      if(!(this.randomNumbers.includes(correctAnswer))){
+        this.randomNumbers[num] = correctAnswer;
+      }
     }
-    if (this.currentOption === 'letras' && !(this.randomNumbers.includes(num))) {
-      this.randomNumbers[num] = this.wordList[this.currentIteration].l;
+    if (this.currentOption === 'letras') {
+      correctAnswer = this.wordList[this.currentIteration].l;
+      if(!(this.randomNumbers.includes(correctAnswer))){
+        this.randomNumbers[num] = correctAnswer;
+      }
     }
-    if (this.currentOption === 'silabas' && !(this.randomNumbers.includes(num))) {
-      this.randomNumbers[num] = this.wordList[this.currentIteration].s;
+    if (this.currentOption === 'silabas') {
+      correctAnswer = this.wordList[this.currentIteration].s;
+      if(!(this.randomNumbers.includes(correctAnswer))){
+        this.randomNumbers[num] = correctAnswer;
+      }
     }
   }
 
@@ -103,8 +116,8 @@ export class Punto2Component implements OnInit {
           this.incorrectAnswers++;
         }
       }
-      if (this.currentOption === this.wordList[this.currentIteration].s) {
-        if (answer === this.currentWord.s) {
+      if (this.currentOption === this.optionList[3]) {
+        if (answer === this.wordList[this.currentIteration].s) {
           this.correctAnswers++;
         } else {
           this.incorrectAnswers++;
