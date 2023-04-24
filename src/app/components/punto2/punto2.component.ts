@@ -68,11 +68,7 @@ export class Punto2Component implements OnInit {
   }
 
   public startGame(answer:number):void{
-    this.currentIteration++;
-    this.generateUniqueRandomNumbers();
-
     if(this.currentIteration < 10){
-      this.currentWord = this.wordList[this.currentIteration].name;
       if(this.currentOption === this.optionList[0]){
         if(answer === this.wordList[this.currentIteration].v){
           this.correctAnswers++;
@@ -101,7 +97,15 @@ export class Punto2Component implements OnInit {
           this.incorrectAnswers++;
         }
       }
-      
+      this.currentIteration++;
+
+      if(this.currentIteration<10){
+        this.currentWord = this.wordList[this.currentIteration].name;
+        this.generateUniqueRandomNumbers();
+      }else{
+        this.gameOver=true;
+      }
+        
     }else{
       this.gameOver = true;
     }
