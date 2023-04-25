@@ -1,0 +1,15 @@
+header {
+    background-color: aqua;
+}
+
+@media (min-width: 576px) {
+    header{
+        background: #e7ff12;
+    }
+}
+
+@media (min-width: 768px){
+    header{
+        background: #7e7f7e;
+    }
+}

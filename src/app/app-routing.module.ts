@@ -24,6 +24,11 @@ const routes: Routes = [
     component: Punto3Component,
     children:[
       {
+        path:'',
+        redirectTo:'/punto3/page1',
+        pathMatch:'full'
+      },
+      {
         path:'page1',
         component: Page1Component
       },
