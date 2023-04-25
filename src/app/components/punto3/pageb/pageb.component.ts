@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pageb.component.css']
 })
 export class PagebComponent implements OnInit {
-
-  constructor() { }
+  currencies:Array<any>;
+  constructor() {
+    this.currencies = [
+      {name:'USD',img:'USD.png'},
+      {name:'EUR',img:'eur.png'},
+      {name:'GBP',img:'gb.png'}
+    ]
+   }
 
   ngOnInit(): void {
   }

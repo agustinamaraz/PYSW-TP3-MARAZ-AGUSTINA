@@ -1,1 +1,73 @@
-<p>pageb works!</p>
+<div class="container">
+    <div class="row mt-5">
+      <div class="d-none d-md-block col-md-8 col-lg-8 col-xl-8 border border-3">
+        <!--TABLA-->
+        <h2 class="h2 text-center bg-primary">Conversor De Divisas</h2>
+        <table class="table text-center">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col" *ngFor="let currency of currencies">
+                <img class="pais" src="assets/images/{{currency.img}}" alt="">
+                <div>{{currency.name}}</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let currency of currencies">
+              <th><img class="pais" src="assets/images/{{currency.img}}" alt=""></th>
+              <th scope="row">
+                <div>{{currency.name}}</div>
+                <div>Inverse</div>
+              </th>
+              <td *ngIf="currency.name=='USD'"><div>1.000000</div><div>1.000000</div></td>
+              <td *ngIf="currency.name=='USD'" class="text-info"><div>0.919901</div><div>1.087074</div></td>
+              <td *ngIf="currency.name=='USD'" class="text-info"><div>0.811469</div><div>0.009182</div></td>
+
+              <td class="text-info" *ngIf="currency.name=='EUR'"><div>1.0870774</div><div>0.919901</div></td>
+              <td *ngIf="currency.name=='EUR'"><div>1.000000</div><div>1.000000</div></td>
+              <td *ngIf="currency.name=='EUR'"class="text-info"><div>0.811469</div><div>1.009182</div></td>
+
+              <td *ngIf="currency.name=='GBP'" class="text-info"><div>1.2323332</div><div>0.811469</div></td>
+              <td *ngIf="currency.name=='GBP'" class="text-info"><div>1.133623</div><div>0.882127</div></td>
+              <td *ngIf="currency.name=='GBP'"><div>1.000000</div><div>1.000000</div></td>
+
+            </tr>
+          </tbody>
+        </table>
+        <!--TABLA-->
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 col-xl-4 border border-3">
+        <h3 class="text-center bg-primary bg-opacity-50 p-2">Conversor De Divisas</h3>
+        <!--FORM-->
+        <form class="formulario-azul text-white p-3">
+          <div class="mb-3">
+            <label for="cantidad" class="form-label">Cantidad</label>
+            <input type="number" class="form-control" id="cantidad" name="cantidad" required placeholder="Ingrese cantidad">
+          </div>
+          <div class="mb-3">
+            <label for="moneda" class="form-label text-white">De</label>
+            <select name="moneda" class="form-select" id="moneda">
+                <option value="usd">USD Dólares EEUU</option>
+                <option value="eur">EUR Euros EU</option>
+                <option value="gbp">GBP Libras Esterlinas UK</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="moneda2" class="form-label text-white">A</label>
+            <select name="moneda2" class="form-select" id="moneda2">
+                <option value="usd">USD Dólares EEUU</option>
+                <option value="eur">EUR Euros EU</option>
+                <option value="gbp">GBP Libras Esterlinas UK</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <input class="form-control text-end" id="resultado" disabled>
+          </div>
+          <button type="submit" class="btn btn-warning w-100">Convertir</button>
+        </form>
+        <!--FORM-->
+      </div>
+    </div>
+  </div>
