@@ -1,1 +1,31 @@
-<p>pagea works!</p>
+<div class="container bg-dark text-white text-center p-3">
+    <div class="h1 p-3 bg-danger bg-opacity-10 border border-danger border-start-0 rounded-end">PORTAL DE TEMAS
+        MUSICALES</div>
+    <section class="row">
+
+
+        <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+            <div class="row justify-content-center">
+                <div class="card m-3" style="width: 15rem;" *ngFor="let c of cards">
+                    <img src="assets/images/{{c.img}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{c.title}}</h5>
+                    <p class="card-text">{{c.artist}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <aside class="col-12 col-md-4 col-lg-4 col-xl-4 mt-3 container-fluid">
+            <div class="h2 bg-black bg-opacity-50">Publicidad</div>
+            <div class="card">
+                <img src="assets/images/team5.jpg" alt="">
+            </div>
+            <div class="card">
+                <img src="assets/images/team5.jpg" alt="">
+            </div>
+        </aside>
+
+    </section>
+</div>
