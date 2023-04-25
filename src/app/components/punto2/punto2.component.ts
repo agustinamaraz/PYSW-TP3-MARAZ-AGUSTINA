@@ -89,7 +89,7 @@ export class Punto2Component implements OnInit {
     this.incorrectAnswers = 0;
 
     this.currentWord = this.wordList[this.currentIteration].name;
-    this.currentOption = this.optionList[Math.floor(Math.random() * 4)];
+    this.currentOption = this.optionList[this.generateRandomNumber(0,4)]; //puede ser que cuando vuelva a jugar salga la misma opcion
     this.generateUniqueRandomNumbers();
   }
 

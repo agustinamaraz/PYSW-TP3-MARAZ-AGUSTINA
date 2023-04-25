@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { Punto1Component } from './components/punto1/punto1.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { Punto2Component } from './components/punto2/punto2.component';
+import { Punto3Component } from './components/punto3/punto3.component';
+import { Page1Component } from './components/punto3/page1/page1.component';
+import { PageaComponent } from './components/punto3/pagea/pagea.component';
+import { PagebComponent } from './components/punto3/pageb/pageb.component';
+import { PagecComponent } from './components/punto3/pagec/pagec.component';
 
 const routes: Routes = [
   {
@@ -14,10 +19,28 @@ const routes: Routes = [
     component: Punto2Component
   },
 
-  // {
-  //   path: 'punto3'
-  //   component: Punto3Component
-  // },
+  {
+    path: 'punto3',
+    component: Punto3Component,
+    children:[
+      {
+        path:'page1',
+        component: Page1Component
+      },
+      {
+        path:'pagea',
+        component:PageaComponent
+      },
+      {
+        path:'pageb',
+        component: PagebComponent
+      },
+      {
+        path:'pagec',
+        component: PagecComponent
+      }
+    ]
+  },
   {
     path:'',
     redirectTo: '/punto1',
