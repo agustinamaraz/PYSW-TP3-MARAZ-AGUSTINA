@@ -1,7 +1,7 @@
-<div class="bg-secondary py-5 text-center">
+<div class="mt-3 py-5 text-center">
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="bg-danger w-25 text-white border border-white rounded-5" (click)="initializeGame()" *ngIf="!gameStart">Play</button>
+            <button class="text-center" (click)="initializeGame()" *ngIf="!gameStart"> <h1>Click to Start</h1> <img src="assets/images/buttonPlay.png" alt=""></button>
             
             <div class="card col-md-12 bg-success" *ngIf="!gameOver && gameStart">
                 <div class="card-body d-flex flex-column align-items-center">

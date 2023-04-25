@@ -8,6 +8,7 @@ import { Page1Component } from './components/punto3/page1/page1.component';
 import { PageaComponent } from './components/punto3/pagea/pagea.component';
 import { PagebComponent } from './components/punto3/pageb/pageb.component';
 import { PagecComponent } from './components/punto3/pagec/pagec.component';
+import { Punto5Component } from './components/punto5/punto5.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
         component: PagecComponent
       }
     ]
+  },
+  {
+    path:'punto5',
+    component:Punto5Component
   },
   {
     path:'',
