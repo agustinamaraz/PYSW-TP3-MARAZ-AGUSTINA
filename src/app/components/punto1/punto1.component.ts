@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./punto1.component.css']
 })
 export class Punto1Component implements OnInit {
+  openAlert:boolean=false;
   productos: Array<any>;
   carrito: Array<any> = [];
   cantidadCarrito: number=0;
@@ -27,6 +28,8 @@ export class Punto1Component implements OnInit {
 
   public agregarAlCarrito(producto: any)
   {
+    this.openAlert=true;
+    
     if(this.carrito.length === 0){ //primer producto que se agrega al carrito
       producto.cantidad=1;
       this.carrito.push(producto);

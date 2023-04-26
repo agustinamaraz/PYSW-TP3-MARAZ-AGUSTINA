@@ -12,6 +12,7 @@ import { PageaComponent } from './components/punto3/pagea/pagea.component';
 import { PagebComponent } from './components/punto3/pageb/pageb.component';
 import { PagecComponent } from './components/punto3/pagec/pagec.component';
 import { Punto5Component } from './components/punto5/punto5.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { Punto5Component } from './components/punto5/punto5.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
