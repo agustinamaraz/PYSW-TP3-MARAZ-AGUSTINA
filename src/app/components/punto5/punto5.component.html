@@ -6,16 +6,16 @@
         </div>
         <div class="mb-3">
         <label for="precio" class="form-label">Precio Real</label>
-        <input type="number" class="form-control" id="precio" [(ngModel)]="comprobante.precioReal">
+        <input type="number" class="form-control" id="precio" name="precioReal" [(ngModel)]="comprobante.precioReal">
         </div>
         <div class="mb-3 form-check">
             <label for="tipo">Tipo Espectador</label>
-            <select class="form-select" aria-label="Default select example" id="tipo" name="tipo" (ngModelChange)='calcularDescuento()' [(ngModel)]="comprobante.tipoEspectador">
-                <option selected value="n">Seleccione opci&acute;n</option>
+            <select class="form-select" aria-label="Default select example" id="tipo" name="tipoEspectador" [(ngModel)]="comprobante.tipoEspectador" (ngModelChange)='calcularDescuento()'>
+                <option selected value="n">Seleccione opci&oacute;n</option>
                 <option value="e">Extranjero</option>
                 <option value="l">Local</option>
               </select>
         </div>
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary" (click)="guardarTicket()">Registrar</button>
     </form>
 </div>

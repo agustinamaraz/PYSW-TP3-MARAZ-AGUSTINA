@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { log } from 'console';
 import { Ticket } from 'src/app/models/ticket';
 import { TicketService } from 'src/app/services/ticket.service';
 
@@ -21,6 +22,7 @@ export class Punto5Component implements OnInit {
 
     this.comprobante.fechaCobro = new Date();
     this.ticketService.addTicket(this.comprobante);
+    console.log(this.comprobante);
     this.comprobante = new Ticket();
   }
 
