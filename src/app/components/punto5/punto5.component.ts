@@ -33,8 +33,8 @@ export class Punto5Component implements OnInit {
     this.comprobante = new Ticket();
   }
 
-  public modificarTicket(id:string):Ticket{
-    this.comprobante
+  public modificarTicket(id:string){
+    this.comprobante = this.ticketService.getTicket(id);
   }
 
   public calcularDescuento() {
