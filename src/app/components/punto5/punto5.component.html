@@ -14,8 +14,17 @@
                 <option selected value="n">Seleccione opci&oacute;n</option>
                 <option value="e">Extranjero</option>
                 <option value="l">Local</option>
-              </select>
+            </select>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="guardarTicket()">Registrar</button>
+
+        <label class="text-white p-1 bg-success" *ngIf="(comprobante.tipoEspectador==='l' || comprobante.tipoEspectador==='e') && comprobante.precioReal!=null">
+              PRECIO FINAL: {{comprobante.precioCobrado}}
+        </label>
+       
+        <!-- *ngIf="comprobante.tipoEspectador!=null && comprobante.precioReal!=null && comprobante.dni!=null" -->
+        <div class="m-3"> 
+            <button type="submit" class="btn btn-primary" routerLink="/punto5-lista" (click)="guardarTicket()">Registrar</button>
+        </div>
+        
     </form>
 </div>

@@ -13,7 +13,7 @@ import { PagebComponent } from './components/punto3/pageb/pageb.component';
 import { PagecComponent } from './components/punto3/pagec/pagec.component';
 import { Punto5Component } from './components/punto5/punto5.component';
 import { FormsModule } from '@angular/forms';
-import { DataTablesModule } from 'angular-datatables';
+import { Punto5ListaComponent } from './components/punto5-lista/punto5-lista.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +26,13 @@ import { DataTablesModule } from 'angular-datatables';
     PageaComponent,
     PagebComponent,
     PagecComponent,
-    Punto5Component
+    Punto5Component,
+    Punto5ListaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    DataTablesModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

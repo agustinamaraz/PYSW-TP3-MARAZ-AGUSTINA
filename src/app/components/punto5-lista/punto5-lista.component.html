@@ -1,0 +1,34 @@
+<h2 *ngIf="tickets===null" class="bg-warning text-white text-center">No hay tickets registrados</h2>
+
+<h3 class="bg-success text-white p-2 text-center">TICKETS REGISTRADOS</h3>
+<table class="table text-center">
+  <thead class="border-3 border-black">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">DNI</th>
+      <th scope="col">PRECIO</th>
+      <th scope="col">TIPO</th>
+      <th scope="col">FECHA DE COMPRA</th>
+      <th scope="col">PRECIO FINAL</th>
+      <th scope="col">ACCIONES</th>
+    </tr>
+  </thead>
+  <tbody class="border-3 border-black  bg-secondary-subtle">
+    <tr *ngFor="let ticket of tickets">
+      <td>{{ticket.id}}</td>
+      <td>{{ticket.dni}}</td>
+      <td>{{ticket.precioReal}}</td>
+      <td *ngIf="ticket.tipoEspectador==='l'">Local</td>
+      <td *ngIf="ticket.tipoEspectador==='e'">Extranjero</td>
+      <td>{{ticket.fechaCobro}}</td>
+      <td>{{ticket.precioCobrado}}</td>
+      <td>
+        <button class="bg-warning" (click)="modificarTicket(ticket)">MODIFICAR</button>
+        <button class="bg-danger" (click)="eliminarTicket(ticket)">ELIMINAR</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <button type="submit" class="btn btn-primary" routerLink="/punto5">Agregar ticket</button> -->
+<button type="submit" class="btn btn-primary" (click)="agregarTicket()">Agregar ticket</button>
