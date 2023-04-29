@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { log } from 'console';
 import { Ticket } from 'src/app/models/ticket';
 import { TicketService } from 'src/app/services/ticket.service';
 
@@ -11,13 +10,20 @@ import { TicketService } from 'src/app/services/ticket.service';
 })
 export class Punto5Component implements OnInit {
   comprobante: Ticket;
-
+  accion:string="new";
   constructor(private ticketService: TicketService,private activatedRouter:ActivatedRoute) {
     this.comprobante = new Ticket();
   }
 
   ngOnInit(): void {
-    
+    this.activatedRouter.params.subscribe(params => {
+      if(params['id']== "0"){
+        this.accion = "new";
+      }else{
+        this.accion = "update";
+        this.modificarTicket;
+      }
+    })
   }
 
   public guardarTicket() {
@@ -25,6 +31,10 @@ export class Punto5Component implements OnInit {
     this.ticketService.addTicket(this.comprobante);
     console.log(this.comprobante);
     this.comprobante = new Ticket();
+  }
+
+  public modificarTicket(id:string):Ticket{
+    this.comprobante
   }
 
   public calcularDescuento() {
