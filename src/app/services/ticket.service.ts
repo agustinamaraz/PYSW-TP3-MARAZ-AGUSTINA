@@ -36,7 +36,7 @@ export class TicketService {
   }
 
   public deleteTicket(ticket: Ticket){
-    this.tickets.splice(ticket.id-1,1);
+    this.tickets.splice(this.tickets.findIndex(t=> t.id === ticket.id),1); 
   }
 
   getIdDisponible() {

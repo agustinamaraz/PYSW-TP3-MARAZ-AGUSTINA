@@ -43,6 +43,7 @@ export class Punto5ListaComponent implements OnInit {
     this.ticketService.deleteTicket(ticket);
     this.router.navigate(["punto5-lista"]);
     console.log("saliendo del metodo modificar de LISTA");
+    this.calcularTotalVentas();
   }
 
   calcularTotalVentas(){
