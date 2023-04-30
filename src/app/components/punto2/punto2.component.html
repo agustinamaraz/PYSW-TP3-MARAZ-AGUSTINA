@@ -18,14 +18,33 @@
             </div>
 
             <div class="card mt-5 bg-dark" *ngIf="gameOver">
-                <div class="card-header text-white">
-                    <h3 class="bg-success">Correct Answers: {{correctAnswers}}</h3>
-                    <h3 class="bg-danger">Incorrect Answers: {{incorrectAnswers}}</h3>
-                    <h3 class="text-white">Total words: {{currentIteration}}</h3>
+                <!-- Modal -->
+                <div class="modal fade" id="idModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Results</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body bg-black">
+                            <div class="card-header text-white">
+                                <h3 class="bg-success">Correct Answers: {{correctAnswers}}</h3>
+                                <h3 class="bg-danger">Incorrect Answers: {{incorrectAnswers}}</h3>
+                                <h3 class="text-white">Total words: {{currentIteration}}</h3>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="initializeGame()">Click on this to play again</button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
+
                 <div class="card-body">
                     <h2 class="text-white">Game Over</h2>
-                    <button type="button" (click)="initializeGame()">Click on this to play again</button>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#idModal">Ver resultados</button>
                 </div>
             </div>
 
