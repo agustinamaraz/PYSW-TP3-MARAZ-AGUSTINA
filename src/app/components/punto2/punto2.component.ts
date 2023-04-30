@@ -54,7 +54,8 @@ export class Punto2Component implements OnInit {
     }
 
     let correctAnswer=0;
-    num = this.generateRandomNumber(0, 3);
+    num = this.generateRandomNumber(0, 4);
+
     if (this.currentOption === 'vocales') {
       correctAnswer = this.wordList[this.currentIteration].v;
       if(!(this.randomNumbers.includes(correctAnswer))){
@@ -94,6 +95,7 @@ export class Punto2Component implements OnInit {
   }
 
   public startGame(answer: number): void {
+    
     if (this.currentIteration < 10) {
       if (this.currentOption === this.optionList[0]) {
         if (answer === this.wordList[this.currentIteration].v) {
