@@ -14,6 +14,8 @@ import { PagecComponent } from './components/punto3/pagec/pagec.component';
 import { Punto5Component } from './components/punto5-formulario/punto5.component';
 import { FormsModule } from '@angular/forms';
 import { Punto5ListaComponent } from './components/punto5-lista/punto5-lista.component';
+import { TipoEspectadorPipe } from './pipes/tipo-espectador.pipe';
+import { PrecioPipe } from './pipes/precio.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { Punto5ListaComponent } from './components/punto5-lista/punto5-lista.com
     PagebComponent,
     PagecComponent,
     Punto5Component,
-    Punto5ListaComponent
+    Punto5ListaComponent,
+    TipoEspectadorPipe,
+    PrecioPipe
   ],
   imports: [
     BrowserModule,

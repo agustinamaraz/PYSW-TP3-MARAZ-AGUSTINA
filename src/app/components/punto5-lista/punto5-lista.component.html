@@ -17,11 +17,10 @@
       <tr *ngFor="let ticket of tickets">
         <td>{{ticket.id}}</td>
         <td>{{ticket.dni}}</td>
-        <td>{{ticket.precioReal}}</td>
-        <td *ngIf="ticket.tipoEspectador==='l'">Local</td>
-        <td *ngIf="ticket.tipoEspectador==='e'">Extranjero</td>
+        <td>{{ticket.precioReal | precio}}</td>
+        <td>{{ ticket.tipoEspectador | tipoEspectador}}</td>
         <td>{{ticket.fechaCobro | date: 'dd/MM/yyyy'}}</td>
-        <td>{{ticket.precioCobrado}}</td>
+        <td>{{ticket.precioCobrado | precio}}</td>
         <td>
           <button type="button" class="bg-warning" (click)="modificarTicket(ticket)">MODIFICAR</button>
           <button type="button" class="bg-danger" (click)="eliminarTicket(ticket)">ELIMINAR</button>
@@ -46,7 +45,7 @@
       LOCAL
     </div>
     <div class="col">
-      {{totalVentasLocal}}
+      {{totalVentasLocal | precio}}
     </div>
   </div>
   <div class="row">
@@ -54,12 +53,12 @@
       EXTRANJERO
     </div>
     <div class="col" >
-      {{totalVentasExtranjero}}
+      {{totalVentasExtranjero | precio}}
     </div>
   </div>
   <div class="row">
     <div class="col">
-      Total ventas: {{totalVentas}}
+      Total ventas: {{totalVentas  | precio}}
     </div>
   </div>
 </div>
