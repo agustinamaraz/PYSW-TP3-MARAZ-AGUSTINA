@@ -13,7 +13,7 @@ export class Punto5ListaComponent implements OnInit {
   totalVentasLocal!:number;
   totalVentasExtranjero!:number;
   accion:string="";
-  tickets:Array<Ticket>
+  tickets:Array<Ticket>;
 
   constructor(private ticketService:TicketService, private router:Router) {
     this.tickets = new Array<Ticket>();

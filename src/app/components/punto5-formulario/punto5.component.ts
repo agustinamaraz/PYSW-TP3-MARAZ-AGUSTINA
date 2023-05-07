@@ -16,7 +16,9 @@ export class Punto5Component implements OnInit {
   constructor(private ticketService: TicketService,private activatedRouter:ActivatedRoute,private router:Router) {
     this.comprobante = new Ticket();
   }
-
+  //como se comporta el form cuando recibe parametros
+  //activatedRouted hace que en un objeto me deje la ruta activa
+  // aca en el fomuulario mi ruta activa es punto5
   ngOnInit(): void {
     this.activatedRouter.params.subscribe(params => {
       if(params['id']== "0"){
@@ -33,11 +35,11 @@ export class Punto5Component implements OnInit {
     this.comprobante.fechaCobro = new Date();
     this.ticketService.addTicket(this.comprobante);
     console.log(this.comprobante);
-    this.comprobante = new Ticket();
+    this.comprobante = new Ticket(); // para que no se quede los valores del comprobante anterior agregado y se cree otro espacio en memoria
 
     this.router.navigate(["punto5-lista"]);
   }
-   //carga los datos del ticket a modificar en el formulario para que no aparezca en blanco
+   //carga los datos del ticket a modificar (por medio del id) en el formulario para que no aparezca en blanco
   public cargarTicket(id:string){
     this.comprobante = this.ticketService.getTicket(id);
     this.copia = JSON.stringify(this.comprobante);

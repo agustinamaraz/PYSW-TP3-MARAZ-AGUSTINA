@@ -6,19 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./punto1.component.css']
 })
 export class Punto1Component implements OnInit {
-  openAlert:boolean=false;
   productos: Array<any>;
   carrito: Array<any> = [];
   cantidadCarrito: number=0;
 
   constructor() { 
     this.productos = [
-      {nombre: 'notebook asus 13L', descripcion: 'disco 40GB, 15pulgadas', img: 'imagen1.jpg', precio: 45.5, cantidad: 0},
-      {nombre: 'Monitor LG 14', descripcion: 'texto descriptivo producto 02', img: 'imagen2.jpg', precio: 100, cantidad: 0},
-      {nombre: 'Monitor LG 55', descripcion: 'texto descriptivo producto 02', img: 'imagen3.jpg', precio: 150,cantidad: 0},
-      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen1.jpg', precio: 160,cantidad: 0},
-      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen2.jpg', precio: 170,cantidad: 0},
-      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen3.jpg', precio: 200,cantidad: 0}
+      {nombre: 'notebook asus 13L', descripcion: 'disco 40GB, 15pulgadas', img: 'imagen1.jpg', precio: 160000, cantidad: 0},
+      {nombre: 'Monitor LG 14', descripcion: 'texto descriptivo producto 02', img: 'imagen2.jpg', precio: 25000, cantidad: 0},
+      {nombre: 'Monitor LG 55', descripcion: 'texto descriptivo producto 02', img: 'imagen3.jpg', precio: 30000,cantidad: 0},
+      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen1.jpg', precio: 150000,cantidad: 0},
+      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen2.jpg', precio: 17000,cantidad: 0},
+      {nombre: 'Monitor HP', descripcion: 'texto descriptivo producto 02', img: 'imagen3.jpg', precio: 20000,cantidad: 0}
     ];
 
   }
@@ -28,7 +27,6 @@ export class Punto1Component implements OnInit {
 
   public agregarAlCarrito(producto: any)
   {
-    this.openAlert=true;
     
     if(this.carrito.length === 0){ //primer producto que se agrega al carrito
       producto.cantidad=1;
@@ -54,11 +52,11 @@ export class Punto1Component implements OnInit {
   }
 
   public actualizarUnidades(operacion:string,producto: any) {
-    const ELIMINADO = this.carrito.find((x)=>{
+    const PRODUCTO = this.carrito.find((x)=>{
       return x.nombre === producto.nombre;
     })
 
-    if(ELIMINADO){
+    if(PRODUCTO){
       if(operacion === 'quitar' && producto.cantidad > 0){
         producto.cantidad-=1;
         this.cantidadCarrito--;
@@ -74,8 +72,8 @@ export class Punto1Component implements OnInit {
   }
 
   public calcularTotal(){
-    const total = this.carrito.reduce(function(contador,producto) {
-      return contador + (producto.cantidad*producto.precio);
+    var total = this.carrito.reduce(function(contador,producto) { //reduce toma una variable la cual va ir iterando de acuerdo
+      return contador + (producto.cantidad*producto.precio);     //a cada producto que se agrega al carrito.
     },0)
     return total;
   }

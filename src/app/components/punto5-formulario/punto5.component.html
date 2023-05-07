@@ -1,15 +1,16 @@
 <div class="p-5">
     <form class="bg-secondary-subtle p-3">
         <div class="mb-3">
-        <label for="dni" class="form-label">DNI</label>
-        <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="comprobante.dni">
+        <label for="dni" class="form-label">DNI</label><!--la información fluye en ambos sentidos, desde el modelo a la vista y desde
+                                                                la vista al modelo. Se necesita de FormsModule para su funcionamiento. -->
+        <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="comprobante.dni"> <!--De la mano del ngModel va el name=""-->
         </div>
         <div class="mb-3">
             <label for="precio" class="form-label">Precio Real</label>
             <input type="number" class="form-control" id="precio" name="precioReal" [(ngModel)]="comprobante.precioReal">
         </div>
         <div class="mb-3 form-check">
-            <label for="tipo">Tipo Espectador</label>
+            <label for="tipo">Tipo Espectador</label>                                                                                           <!-- cuando cambie el espectador se calcula el descuento para ese tipo de espectador -->
             <select class="form-select" aria-label="Default select example" id="tipo" name="tipoEspectador" [(ngModel)]="comprobante.tipoEspectador" (ngModelChange)='calcularDescuento()'>
                 <option selected value="n">Seleccione opci&oacute;n</option>
                 <option value="e">Extranjero</option>
@@ -18,7 +19,7 @@
         </div>
 
         <label class="text-white p-1 bg-success" *ngIf="(comprobante.tipoEspectador==='l' || comprobante.tipoEspectador==='e') && comprobante.precioReal!=null">
-              PRECIO FINAL: {{comprobante.precioCobrado}}
+              PRECIO FINAL: {{comprobante.precioCobrado}} <!-- expresion, viaja desde el controlador o modelo a la vista-->
         </label>
        
         <!-- *ngIf="comprobante.tipoEspectador!=null && comprobante.precioReal!=null && comprobante.dni!=null" -->
